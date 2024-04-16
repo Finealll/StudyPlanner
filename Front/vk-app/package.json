@@ -4,6 +4,7 @@
     "scripts": {
         "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
         "build": "react-scripts build",
+        "webpack": "npx webpack --config webpack.config.js --mode development",
         "predeploy": "npm run build",
         "deploy": "vk-miniapps-deploy"
     },
@@ -15,6 +16,7 @@
     "dependencies": {
         "@vkontakte/icons": "2.7.0",
         "@vkontakte/vk-bridge": "latest",
+        "@vkontakte/vk-bridge-mock": "^2.2.0",
         "@vkontakte/vk-miniapps-deploy": "0.0.25",
         "@vkontakte/vkui": "5.1.0",
         "babel-eslint": "^10.1.0",
@@ -23,12 +25,15 @@
         "eruda-dom": "^2.0.0",
         "prop-types": "^15.7.2",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react-dom": "^17.0.2",
+        "webpack": "^5.91.0"
     },
     "devDependencies": {
         "cross-env": "^7.0.3",
         "react-hot-loader": "^4.13.0",
-        "react-scripts": "^5.0.1"
+        "react-scripts": "^5.0.1",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.15.2"
     },
     "resolutions": {
         "react-scripts/webpack-dev-server/yargs/yargs-parser": ">=18.1.2"

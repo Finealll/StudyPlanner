@@ -1,0 +1,77 @@
+
+.users-list-item{
+    font-family: 'Inter', serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 5px;
+
+}
+
+.users-list-item:hover{
+    background-color: #EFEFEF;
+}
+
+.users-list-item-info{
+}
+
+.users-list-item-info-name{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 20px;
+
+    color: #000000;
+}
+
+.users-list-item-info-subject{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: #4A4747;
+}
+
+.users-list-item-info-additional{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: #4A4747;
+}
+
+.users-list-item-info-additional-integration{
+    color: #32C538;
+    text-decoration: underline;
+}
+
+.users-list-item-info-additional-integration:hover {
+    cursor: pointer;
+}
+
+.users-list-item-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.users-list-item-buttons>div{
+    width: 30px;
+    height: 30px;
+}
+
+.users-list-item-buttons>div:hover{
+    cursor: pointer;
+}
+
+.users-list-item-info-404{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: #4A4747;
+}

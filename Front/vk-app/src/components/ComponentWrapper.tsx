@@ -23,7 +23,7 @@ export const ComponentWrapper = (props: ComponentWrapperProps) => {
         </Div>
         {hidden ? <>
             <Separator/>
-            <Div style={{display: "flex", justifyContent: "center"}}>{props.children}</Div>
+            <Div className="component-wrapper-body">{props.children}</Div>
         </> : <></>
         }
     </Group>;

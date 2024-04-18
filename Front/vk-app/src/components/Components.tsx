@@ -20,6 +20,8 @@ import {Moment} from "moment/moment";
 // @ts-ignore
 import getRange from "../utils/DateUtils.ts";
 import * as moment from "moment/moment";
+// @ts-ignore
+import {Button, ButtonType} from "./Buttons/Button.tsx";
 
 const usersListMock = [
     {
@@ -154,6 +156,13 @@ function Components ({ id, go}) {
             description={"Календарик для отображения занятости преподавателя"}
         >
             <Calendar getCalendarInfo={getCalendarInfoMocks} onDayClick={(day) => alert(day)}/>
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Кнопки"}
+            description={"Различного вида кнопаньки"}
+        >
+            <Button text={"Добавить"} type={ButtonType.GREEN} onClick={() => alert('Добавить')}/>
+            <Button text={"Удалить"} type={ButtonType.RED} onClick={() => alert('Удалить')}/>
         </ComponentWrapper>
     </Panel>
 }

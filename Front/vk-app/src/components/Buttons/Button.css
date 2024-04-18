@@ -1,0 +1,28 @@
+
+
+.button{
+    width: 100%;
+    border-radius: 4px;
+    color: #FFFFFF;
+    padding: 8px;
+
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+
+    text-align: center;
+}
+
+.button:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.button-red{
+    background-color: #E81919;
+}
+
+.button-green{
+    background-color: #32C538;
+}

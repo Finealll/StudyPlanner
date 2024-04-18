@@ -1,5 +1,6 @@
-import {Div, Group, Separator, Subhead, Title} from "@vkontakte/vkui";
-import { ReactChild, ReactFragment, ReactPortal } from "react";
+import {Button, Div, Group, Separator, Subhead, Title} from "@vkontakte/vkui";
+import {ReactChild, ReactFragment, ReactPortal, useState} from "react";
+import './ComponentsWrapper.css'
 
 interface ComponentWrapperProps{
     children: boolean | ReactChild | ReactFragment | ReactPortal;
@@ -8,12 +9,22 @@ interface ComponentWrapperProps{
 }
 
 export const ComponentWrapper = (props: ComponentWrapperProps) => {
+    const [hidden, setHidden] = useState(false);
+
     return <Group>
-        <Div>
-            <Title style={{ marginBottom: 4 }}>{props.title}</Title>
-            <Subhead style={{ marginBottom: 2 }}>{props.description}</Subhead>
+        <Div className="component-wrapper-header">
+            <div>
+                <Title style={{ marginBottom: 4 }}>{props.title}</Title>
+                <Subhead style={{ marginBottom: 2 }}>{props.description}</Subhead>
+            </div>
+            <div>
+                <Button onClick={() => setHidden(!hidden)}>{hidden ? 'Свернуть' : 'Развернуть'}</Button>
+            </div>
         </Div>
-        <Separator/>
-        <Div style={{display: "flex", justifyContent: "center"}}>{props.children}</Div>
+        {hidden ? <>
+            <Separator/>
+            <Div style={{display: "flex", justifyContent: "center"}}>{props.children}</Div>
+        </> : <></>
+        }
     </Group>;
 }

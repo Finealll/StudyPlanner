@@ -22,6 +22,7 @@ import getRange from "../utils/DateUtils.ts";
 import * as moment from "moment/moment";
 // @ts-ignore
 import {Button, ButtonType} from "./Buttons/Button.tsx";
+import {useState} from "react";
 
 const usersListMock = [
     {
@@ -53,34 +54,45 @@ const usersListMock = [
     },
 ]
 
+const badgesInitialState = [
+    {
+        id: 1,
+        value: '30 минут',
+        isSelected: true,
+    },
+    {
+        id: 2,
+        value: '45 минут',
+        isSelected: true,
+    },
+    {
+        id: 3,
+        value: '1 час',
+        isSelected: false,
+    },
+    {
+        id: 4,
+        value: '1 час 15 минут',
+        isSelected: false,
+    },
+    {
+        id: 5,
+        value: '2 часа',
+        isSelected: false,
+    }
+]
+
 function Components ({ id, go}) {
-    var badgesMock = [
-        {
-            id: 1,
-            value: '30 минут',
-            isSelected: true,
-        },
-        {
-            id: 2,
-            value: '45 минут',
-            isSelected: true,
-        },
-        {
-            id: 3,
-            value: '1 час',
-            isSelected: false,
-        },
-        {
-            id: 4,
-            value: '1 час 15 минут',
-            isSelected: false,
-        },
-        {
-            id: 5,
-            value: '2 часа',
-            isSelected: false,
+    const [badgesMock, setBadgesMock] = useState(badgesInitialState);
+
+    function updateBadgesMock(badge){
+        let badges = [...badgesMock]
+        let selectedBadge = badges.find((b) => b.id === badge.id)
+        if(selectedBadge){
+            selectedBadge.isSelected = !selectedBadge.isSelected
         }
-    ]
+        setBadgesMock(badges)
+    }
 
     function getCalendarInfoMocks(fromDate: Moment, toDate: Moment): CalendarExternalDayProps[]{
         let calendarDates = getRange(fromDate, toDate, 'day')
@@ -149,7 +161,7 @@ function Components ({ id, go}) {
             title={"Бейдж-селектор"}
             description={"Селектор из красивых бейджей"}
         >
-            <BadgesSelector items={badgesMock} onSelect={(badge) => alert(badge.value)} />
+            <BadgesSelector items={badgesMock} onSelect={updateBadgesMock} />
         </ComponentWrapper>
         <ComponentWrapper
             title={"Календарь"}

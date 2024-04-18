@@ -14,6 +14,12 @@ import {UsersList} from "./UsersList/UsersList.tsx";
 import {UsersListItem, UsersListItemProps} from "./UsersList/UsersListItem.tsx";
 // @ts-ignore
 import {BadgesSelector} from "./BadgesSelector/BadgesSelector.tsx";
+// @ts-ignore
+import {Calendar, CalendarExternalDayProps} from "./Calendar/Calendar.tsx";
+import {Moment} from "moment/moment";
+// @ts-ignore
+import getRange from "../utils/DateUtils.ts";
+import * as moment from "moment/moment";
 
 const usersListMock = [
     {
@@ -74,6 +80,49 @@ function Components ({ id, go}) {
         }
     ]
 
+    function getCalendarInfoMocks(fromDate: Moment, toDate: Moment): CalendarExternalDayProps[]{
+        let calendarDates = getRange(fromDate, toDate, 'day')
+        let result = []
+        calendarDates.forEach((date) => {
+            switch (date.day()){
+                case 0:
+                    result.push({
+                        date: date,
+                        disabled: true,
+                        hasSpecialSchedule: false,
+                        hasLessons: false
+                    })
+                    break
+                case 1:
+                    result.push({
+                        date: date,
+                        disabled: false,
+                        hasSpecialSchedule: true,
+                        hasLessons: false
+                    })
+                    break
+                case 2:
+                    result.push({
+                        date: date,
+                        disabled: false,
+                        hasSpecialSchedule: false,
+                        hasLessons: true
+                    })
+                    break
+                case 3:
+                    result.push({
+                        date: date,
+                        disabled: false,
+                        hasSpecialSchedule: true,
+                        hasLessons: true
+                    })
+                    break
+            }
+        })
+
+        return result
+    }
+
     return <Panel id={id}>
         <PanelHeader
             before={<PanelHeaderBack onClick={go} data-to="home"/>}>Components</PanelHeader>
@@ -99,6 +148,12 @@ function Components ({ id, go}) {
             description={"Селектор из красивых бейджей"}
         >
             <BadgesSelector items={badgesMock} onSelect={(badge) => alert(badge.value)} />
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Календарь"}
+            description={"Календарик для отображения занятости преподавателя"}
+        >
+            <Calendar getCalendarInfo={getCalendarInfoMocks} onDayClick={(day) => alert(day)}/>
         </ComponentWrapper>
     </Panel>
 }

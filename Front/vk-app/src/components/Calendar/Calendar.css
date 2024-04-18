@@ -1,0 +1,142 @@
+.calendar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #3419D8;
+}
+
+.calendar-header__title{
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    color: #3419D8;
+    text-transform: capitalize;
+}
+
+.calendar-header__buttons{
+    display: flex;
+}
+
+.calendar-header__buttons>div{
+    width: 40px;
+    height: 40px;
+}
+
+.calendar-header__buttons_before{
+    background-image: url("../../assets/icons/down.svg");
+    rotate: 180deg;
+}
+
+.calendar-header__buttons_before:hover{
+    cursor: pointer;
+}
+
+.calendar-header__buttons_after{
+    background-image: url("../../assets/icons/down.svg");
+}
+
+.calendar-header__buttons_after:hover{
+    cursor: pointer;
+}
+
+.calendar-body{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-body__weekdays{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.calendar-body__weekday{
+    width: 14.28%;
+    text-align: center;
+}
+
+.calendar-body__days{
+    display: flex;
+    flex-wrap: wrap;
+
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.calendar-body__day{
+    width: 14.28%;
+    text-align: center;
+    align-content: center;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.calendar-body__day:hover{
+
+}
+
+.calendar-body__day--enabled:hover{
+    background-color: #D9D9D9;
+}
+
+.calendar-body__day--disabled{
+    cursor: not-allowed;
+    background-color: #D9D9D9;
+    opacity: 0.5;
+}
+
+.calendar-body__day--weekend{
+    color: #E81919;
+}
+
+.calendar-body__day--currentDay{
+    background-color: #D9D9D9;
+}
+
+.calendar-body__day--notThisMonth{
+    opacity: 0.5;
+}
+
+.calendar-body__day--indicators{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+}
+
+.calendar-body__day--indicators>div{
+    margin-left: 2px;
+}
+
+.calendar-body__day--indicators--hasLessons{
+    width: 10px;
+    height: 10px;
+    background-color: #32C538;
+    border-radius: 50%;
+}
+
+.calendar-body__day--indicators--hasSpecialSchedule{
+    width: 10px;
+    height: 10px;
+    background-color: #FF0000;
+    border-radius: 50%;
+}

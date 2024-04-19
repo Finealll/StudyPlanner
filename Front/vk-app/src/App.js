@@ -4,10 +4,11 @@ import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, Split
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
 import Components from "./components/Components.tsx";
 import './App.css'
 import {UserSelection} from "./panels/UserSelector/UserSelector.tsx";
+import {TeacherMainScreen} from "./panels/TeacherMainScreen/TeacherMainScreen.tsx";
+import {StudentMainScreen} from "./panels/StudentMainScreen/StudentMainScreen.tsx";
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('user-selection');
@@ -29,7 +30,6 @@ const App = () => {
 	};
 
 	const selectUser = e => {
-		console.log(e.currentTarget.dataset.to);
 		setActivePanel(e.currentTarget.dataset.to);
 	};
 
@@ -43,7 +43,8 @@ const App = () => {
 								<Home id='home' fetchedUser={fetchedUser} go={go} />
 								<Components id='components' go={go} />
 								<UserSelection id='user-selection' userSelect={selectUser} />
-								<Persik id='persik' go={go} />
+								<TeacherMainScreen id='teacher-main' go={go}  />
+								<StudentMainScreen id='student-main' go={go}  />
 							</View>
 						</SplitCol>
 					</SplitLayout>

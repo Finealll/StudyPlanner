@@ -29,6 +29,8 @@ import {ScheduleSelector} from "./ScheduleSelector/ScheduleSelector.tsx";
 import {IntegrationInfo} from "./IntegrationInfo/IntegrationInfo.tsx";
 // @ts-ignore
 import {Input, InputType} from "./Input/Input.tsx";
+// @ts-ignore
+import {Warning} from "./Warning/Warning.tsx";
 
 const usersListMock = [
     {
@@ -277,6 +279,12 @@ function Components ({ id, go}) {
                 <Input style={InputType.GRAY} placeholder="это тестовый плейсхолдер"
                        onSubmit={(value) => alert(value)}/>
             </div>
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Warning"}
+            description={"Вызывающее обращение"}
+        >
+            <Warning text={"При изменении обнаружены записи на изменяемое время. Подтвердить удаление?"}/>
         </ComponentWrapper>
     </Panel>
 }

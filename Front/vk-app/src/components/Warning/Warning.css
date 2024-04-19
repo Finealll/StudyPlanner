@@ -1,0 +1,25 @@
+
+
+.warning-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.warning-logo{
+    background-image: url("../../assets/icons/alert.svg");
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+}
+
+.warning-text{
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+    color: #E81919;
+}

@@ -23,6 +23,8 @@ import * as moment from "moment/moment";
 // @ts-ignore
 import {Button, ButtonType} from "./Buttons/Button.tsx";
 import {useState} from "react";
+// @ts-ignore
+import {ScheduleSelector} from "./ScheduleSelector/ScheduleSelector.tsx";
 
 const usersListMock = [
     {
@@ -82,8 +84,61 @@ const badgesInitialState = [
     }
 ]
 
+const sheduleMockInitialState = [
+    {
+        id: 1,
+        dayOfWeek: 1,
+        isSelected: true,
+        fromDate: moment().startOf('hour'),
+        toDate: moment().startOf('hour').add(1, 'hour'),
+    },
+    {
+        id: 2,
+        dayOfWeek: 2,
+        isSelected: true,
+        fromDate: moment().startOf('hour'),
+        toDate: moment().startOf('hour').add(1, 'hour'),
+    },
+    {
+        id: 3,
+        dayOfWeek: 3,
+        isSelected: false,
+        fromDate: moment().startOf('hour'),
+        toDate: moment().startOf('hour').add(1, 'hour'),
+    },
+    {
+        id: 4,
+        dayOfWeek: 4,
+        isSelected: false,
+        fromDate: moment().startOf('hour'),
+        toDate: moment().startOf('hour').add(1, 'hour'),
+    },
+    {
+        id: 5,
+        dayOfWeek: 5,
+        isSelected: false,
+        fromDate: moment().startOf('hour'),
+        toDate: moment().startOf('hour').add(1, 'hour'),
+    },
+    {
+        id: 6,
+        dayOfWeek: 6,
+        isSelected: true,
+        fromDate: moment().startOf('hour'),
+        toDate: moment().startOf('hour').add(1, 'hour'),
+    },
+    {
+        id: 7,
+        dayOfWeek: 0,
+        isSelected: false,
+        fromDate: moment().startOf('hour'),
+        toDate: moment().startOf('hour').add(1, 'hour'),
+    }
+]
+
 function Components ({ id, go}) {
     const [badgesMock, setBadgesMock] = useState(badgesInitialState);
+    const [sheduleMock, setSheduleMock] = useState(sheduleMockInitialState);
 
     function updateBadgesMock(badge){
         let badges = [...badgesMock]
@@ -92,6 +147,15 @@ function Components ({ id, go}) {
             selectedBadge.isSelected = !selectedBadge.isSelected
         }
         setBadgesMock(badges)
+    }
+
+    function updateSheduleMock(shedule){
+        let shedules = [...sheduleMock]
+        let selectedShedule = shedules.find((s) => s.id === shedule.id)
+        if(selectedShedule){
+            selectedShedule.isSelected = !selectedShedule.isSelected
+        }
+        setSheduleMock(shedules)
     }
 
     function getCalendarInfoMocks(fromDate: Moment, toDate: Moment): CalendarExternalDayProps[]{
@@ -175,6 +239,12 @@ function Components ({ id, go}) {
         >
             <Button text={"Добавить"} type={ButtonType.GREEN} onClick={() => alert('Добавить')}/>
             <Button text={"Удалить"} type={ButtonType.RED} onClick={() => alert('Удалить')}/>
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Селектор расписания"}
+            description={"Селектор расписания преподавателя в лк"}
+        >
+            <ScheduleSelector items={sheduleMock} onSelect={updateSheduleMock} />
         </ComponentWrapper>
     </Panel>
 }

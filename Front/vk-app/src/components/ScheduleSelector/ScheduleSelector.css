@@ -1,0 +1,47 @@
+
+
+.schedule-selector{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.schedule-selector-item{
+    color: #000000;
+    width: 12%;
+    font-family: 'Inter', serif;
+}
+
+.schedule{
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    height: 70px;
+    background-color: #3419D8;
+    color: white;
+
+    text-align: center;
+    vertical-align: center;
+    align-content: center;
+}
+
+.schedule:hover{
+     cursor: pointer;
+ }
+
+.schedule-selected{
+}
+
+.schedule-unselected{
+    background-color: #7A98D2;
+}
+
+.schedule-selector-item-time{
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+    color: #000000;
+}

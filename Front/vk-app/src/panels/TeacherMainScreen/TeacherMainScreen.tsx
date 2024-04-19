@@ -4,7 +4,7 @@ import {DefaultLayout, DefaultLayoutProps} from "../../layouts/DefaultLayout.tsx
 import React from "react";
 
 
-export const TeacherMainScreen = (props) => {
+export const TeacherMainScreen = (props: {go : () => void}) => {
 
     function getLogOutButton() {
         return <div className="logout-button" onClick={props.go} data-to="user-selection"/>

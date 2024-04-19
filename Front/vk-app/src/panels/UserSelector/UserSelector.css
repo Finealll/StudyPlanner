@@ -1,0 +1,77 @@
+
+.users-selection{
+    background-color: #3419D8;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.users-selection-title{
+    height: 15%;
+    align-content: center;
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 56px;
+    color: #FFFFFF;
+}
+
+.users-selection-teacher{
+    height: 42%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.users-selection-teacher:hover{
+    cursor: pointer;
+}
+
+.users-selection-teacher__logo{
+    background-image: url("../../assets/icons/teacher.svg");
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 250px;
+}
+
+.users-selection-teacher__title{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+
+    color: #FFFFFF;
+
+
+}
+
+.users-selection-student{
+    height: 42%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.users-selection-student:hover{
+    cursor: pointer;
+}
+
+
+.users-selection-student__logo{
+    background-image: url("../../assets/icons/student.svg");
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 250px;
+}
+
+.users-selection-student__title{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+
+    color: #FFFFFF;
+}

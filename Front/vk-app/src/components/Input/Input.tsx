@@ -31,7 +31,6 @@ export const Input = (props: InputProps) => {
         target: any;
         key: string }) => {
         if (event.key === 'Enter') {
-            console.log(event.target.value)
             props.onSubmit(event.target.value);
         }
     };

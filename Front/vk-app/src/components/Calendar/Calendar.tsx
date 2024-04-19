@@ -55,7 +55,6 @@ export const Calendar = (props: CalendarProps) => {
         let toDate   = moment.utc(currentMonthState.value).endOf('month').endOf('week').startOf('day');
         let calendarDates = getRange(fromDate, toDate, 'day')
         let calendarExternalData = props.getCalendarInfo(fromDate, toDate);
-        console.log(calendarExternalData)
         let calendarData = calendarDates.map((date) => {
             let props = {
                 date: date,

@@ -75,3 +75,8 @@
 
     color: #4A4747;
 }
+
+.users-list-item-buttons-cancel{
+    background-image: url("../../assets/icons/close.svg");
+    background-repeat: no-repeat;
+}

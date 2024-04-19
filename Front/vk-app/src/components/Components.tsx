@@ -31,6 +31,8 @@ import {IntegrationInfo} from "./IntegrationInfo/IntegrationInfo.tsx";
 import {Input, InputType} from "./Input/Input.tsx";
 // @ts-ignore
 import {Warning} from "./Warning/Warning.tsx";
+// @ts-ignore
+import {SubjectListItem} from "./SubjectsListItems/SubjectListItem.tsx";
 
 const usersListMock = [
     {
@@ -142,6 +144,19 @@ const sheduleMockInitialState = [
     }
 ]
 
+const SubjectListMock = [
+    {
+        id: 1,
+        name: 'Геометрия',
+        durations: [30, 60, 90, 120],
+    },
+    {
+        id: 2,
+        name: 'Математика',
+        durations: [60, 120],
+    }
+]
+
 function Components ({ id, go}) {
     const [badgesMock, setBadgesMock] = useState(badgesInitialState);
     const [sheduleMock, setSheduleMock] = useState(sheduleMockInitialState);
@@ -234,6 +249,17 @@ function Components ({ id, go}) {
                     return <UsersListItem onCancel={() => alert(`Отмена ${user.name}`)} {...user}/>
                 }) : <></>}
             </UsersList>
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Элементы предметов"}
+            description={"Элемены списка предметов"}
+        >
+            <div style={{display: "flex", flexDirection: "column", width: "100%"}}>
+                {SubjectListMock.map((subject) => {
+                    return <SubjectListItem {...subject} onDelete={(id) => alert(`Удалить: ${subject.name}`)}
+                                            onEdit={(id) => alert(`Изменить: ${subject.name}`)}/>
+                })}
+            </div>
         </ComponentWrapper>
         <ComponentWrapper
             title={"Бейдж-селектор"}

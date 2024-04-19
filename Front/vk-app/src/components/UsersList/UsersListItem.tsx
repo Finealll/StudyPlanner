@@ -37,9 +37,7 @@ export const UsersListItem = (props: UsersListItemProps) => {
             </> : <div className="users-list-item-info-404">Ближайших занятий не запланировано</div>}
         </div>
         <div className="users-list-item-buttons">
-            <div className="users-list-item-buttons-cancel" onClick={() => props.onCancel(props.id)}>
-                <img src={cancelButton} alt="cancel"/>
-            </div>
+            <div className="users-list-item-buttons-cancel" onClick={() => props.onCancel(props.id)}/>
         </div>
     </div>
 }

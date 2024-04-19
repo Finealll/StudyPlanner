@@ -27,6 +27,8 @@ import {useState} from "react";
 import {ScheduleSelector} from "./ScheduleSelector/ScheduleSelector.tsx";
 // @ts-ignore
 import {IntegrationInfo} from "./IntegrationInfo/IntegrationInfo.tsx";
+// @ts-ignore
+import {Input, InputType} from "./Input/Input.tsx";
 
 const usersListMock = [
     {
@@ -263,6 +265,17 @@ function Components ({ id, go}) {
             <div style={{display: "flex", flexDirection: "column"}}>
                 <IntegrationInfo integrated={false} email={null} onClickIntegration={IntegrationCallback} />
                 <IntegrationInfo integrated={true} email="example@mail.ru" onClickIntegration={IntegrationCallback} />
+            </div>
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Инпут"}
+            description={"Инпутит инпутируемое"}
+        >
+            <div style={{display: "flex", flexDirection: "column", width: "100%"}}>
+                <Input style={InputType.BLACK} placeholder="это тестовый плейсхолдер"
+                       onSubmit={(value) => alert(value)}/>
+                <Input style={InputType.GRAY} placeholder="это тестовый плейсхолдер"
+                       onSubmit={(value) => alert(value)}/>
             </div>
         </ComponentWrapper>
     </Panel>

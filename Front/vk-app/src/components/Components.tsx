@@ -296,8 +296,8 @@ function Components ({ id, go}) {
             </div>
         </ComponentWrapper>
         <ComponentWrapper
-            title={"Инпут"}
-            description={"Инпутит инпутируемое"}
+            title={"Инпуты"}
+            description={"Инпутят инпутируемое"}
         >
             <div style={{display: "flex", flexDirection: "column", width: "100%"}}>
                 <Input style={InputType.BLACK} placeholder="это тестовый плейсхолдер"

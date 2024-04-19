@@ -1,0 +1,23 @@
+
+.integration-info{
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.integration-info__enabled{
+    color: #32C538;
+}
+
+.integration-info__disabled{
+    color: #E81919;
+}
+
+.integration-info__action{
+    text-decoration: underline;
+}
+
+.integration-info__action:hover{
+    cursor: pointer;
+}

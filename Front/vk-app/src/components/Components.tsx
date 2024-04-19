@@ -25,6 +25,8 @@ import {Button, ButtonType} from "./Buttons/Button.tsx";
 import {useState} from "react";
 // @ts-ignore
 import {ScheduleSelector} from "./ScheduleSelector/ScheduleSelector.tsx";
+// @ts-ignore
+import {IntegrationInfo} from "./IntegrationInfo/IntegrationInfo.tsx";
 
 const usersListMock = [
     {
@@ -201,6 +203,14 @@ function Components ({ id, go}) {
         return result
     }
 
+    function IntegrationCallback(needIntegration: boolean){
+        if(needIntegration){
+            alert("Интегрируемся...")
+        } else {
+            alert("Разинтегрируемся...")
+        }
+    }
+
     return <Panel id={id}>
         <PanelHeader
             before={<PanelHeaderBack onClick={go} data-to="home"/>}>Components</PanelHeader>
@@ -245,6 +255,15 @@ function Components ({ id, go}) {
             description={"Селектор расписания преподавателя в лк"}
         >
             <ScheduleSelector items={sheduleMock} onSelect={updateSheduleMock} />
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Информер интеграции"}
+            description={"Информирует о наличии интеграции"}
+        >
+            <div style={{display: "flex", flexDirection: "column"}}>
+                <IntegrationInfo integrated={false} email={null} onClickIntegration={IntegrationCallback} />
+                <IntegrationInfo integrated={true} email="example@mail.ru" onClickIntegration={IntegrationCallback} />
+            </div>
         </ComponentWrapper>
     </Panel>
 }

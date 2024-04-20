@@ -12,9 +12,10 @@ import {StudentMain} from "./panels/StudentMain/StudentMain.tsx";
 import {TeacherProfile} from "./panels/TeacherProfile/TeacherProfile.tsx";
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('teacher-profile');
+	const [activePanel, setActivePanel] = useState('user-selection');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+	const [studentTeacherViewId, setStudentTeacherViewId] = useState(null);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -30,8 +31,9 @@ const App = () => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
 
-	const selectUser = e => {
-		setActivePanel(e.currentTarget.dataset.to);
+	const goStudentTeacherView = id => {
+		setStudentTeacherViewId(id)
+		setActivePanel('student-teacher-view');
 	};
 
 	return (
@@ -44,10 +46,10 @@ const App = () => {
 							<View activePanel={activePanel}>
 								<Home id='home' fetchedUser={fetchedUser} go={go}/>
 								<Components id='components' go={go}/>
-								<UserSelection id='user-selection' userSelect={selectUser}/>
+								<UserSelection id='user-selection' go={go}/>
 								<TeacherMain id='teacher-main' go={go}/>
 								<TeacherProfile id='teacher-profile' go={go}/>
-								<StudentMain id='student-main' go={go}/>
+								<StudentMain id='student-main' go={go} goStudentTeacherView={goStudentTeacherView}/>
 							</View>
 						</SplitCol>
 					</SplitLayout>

@@ -11,7 +11,8 @@ import {UsersList} from "../../components/UsersList/UsersList.tsx";
 import {UsersListItem, UsersListItemProps} from "../../components/UsersList/UsersListItem.tsx";
 // @ts-ignore
 import {InfoBlock} from "../../components/InfoBlock/InfoBlock.tsx";
-import {Moment} from "moment";
+// @ts-ignore
+import moment, {Moment} from "moment";
 
 export const TeacherMain = (props: {go : () => void}) => {
     const [nearestLessons, setNearestLessons] = useState([
@@ -19,7 +20,7 @@ export const TeacherMain = (props: {go : () => void}) => {
             id: "a0142d14-d549-4a6d-ae9c-30f81e145eb7",
             name: "Ангелина Вятская",
             subject: "Геометрия",
-            date: new Date(),
+            date: moment(),
             duration: 90,
             integrationName: null,
             integrationLink: null,
@@ -28,7 +29,7 @@ export const TeacherMain = (props: {go : () => void}) => {
             id: "0a21890b-f78e-47fc-8453-f57a7cd72048",
             name: "Никита Егоров",
             subject: "Геометрия",
-            date: new Date(),
+            date: moment(),
             duration: 240,
             integrationName: "Zoom",
             integrationLink: "https://www.zoom.com/",

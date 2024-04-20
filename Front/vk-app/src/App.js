@@ -10,6 +10,8 @@ import {UserSelection} from "./panels/UserSelector/UserSelector.tsx";
 import {TeacherMain} from "./panels/TeacherMain/TeacherMain.tsx";
 import {StudentMain} from "./panels/StudentMain/StudentMain.tsx";
 import {TeacherProfile} from "./panels/TeacherProfile/TeacherProfile.tsx";
+import {StudentTeacherView} from "./panels/StudentTeacherView/StudentTeacherView.tsx";
+import {string} from "prop-types";
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('user-selection');
@@ -50,6 +52,7 @@ const App = () => {
 								<TeacherMain id='teacher-main' go={go}/>
 								<TeacherProfile id='teacher-profile' go={go}/>
 								<StudentMain id='student-main' go={go} goStudentTeacherView={goStudentTeacherView}/>
+								<StudentTeacherView id='student-teacher-view' go={go} teacherId={studentTeacherViewId}/>
 							</View>
 						</SplitCol>
 					</SplitLayout>

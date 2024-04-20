@@ -33,6 +33,8 @@ import {Input, InputType} from "./Input/Input.tsx";
 import {Warning} from "./Warning/Warning.tsx";
 // @ts-ignore
 import {SubjectListItem} from "./SubjectsListItems/SubjectListItem.tsx";
+// @ts-ignore
+import Modal from "./Modal/Modal.tsx";
 
 const usersListMock = [
     {
@@ -159,7 +161,9 @@ const SubjectListMock = [
 
 function Components ({ id, go}) {
     const [badgesMock, setBadgesMock] = useState(badgesInitialState);
-    const [sheduleMock, setSheduleMock] = useState(sheduleMockInitialState);
+    const [scheduleMock, setScheduleMock] = useState(sheduleMockInitialState);
+    const [showModalWithHeader, setShowModalWithHeader] = useState(false);
+    const [showModalWithoutHeader, setShowModalWithoutHeader] = useState(false);
 
     function updateBadgesMock(badge){
         let badges = [...badgesMock]
@@ -171,12 +175,12 @@ function Components ({ id, go}) {
     }
 
     function updateSheduleMock(shedule){
-        let shedules = [...sheduleMock]
+        let shedules = [...scheduleMock]
         let selectedShedule = shedules.find((s) => s.id === shedule.id)
         if(selectedShedule){
             selectedShedule.isSelected = !selectedShedule.isSelected
         }
-        setSheduleMock(shedules)
+        setScheduleMock(shedules)
     }
 
     function getCalendarInfoMocks(fromDate: Moment, toDate: Moment): CalendarExternalDayProps[]{
@@ -284,7 +288,7 @@ function Components ({ id, go}) {
             title={"Селектор расписания"}
             description={"Селектор расписания преподавателя в лк"}
         >
-            <ScheduleSelector items={sheduleMock} onSelect={updateSheduleMock} />
+            <ScheduleSelector items={scheduleMock} onSelect={updateSheduleMock} />
         </ComponentWrapper>
         <ComponentWrapper
             title={"Информер интеграции"}
@@ -311,6 +315,31 @@ function Components ({ id, go}) {
             description={"Вызывающее обращение"}
         >
             <Warning text={"При изменении обнаружены записи на изменяемое время. Подтвердить удаление?"}/>
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Модальное окно"}
+            description={"Компонент для отображения модальных окон"}
+        >
+            <Button text={"Модалка с хедером"} type={ButtonType.GREEN} onClick={() => setShowModalWithHeader(!showModalWithHeader)}/>
+            <Button text={"Модалка без хедера"} type={ButtonType.RED} onClick={() => setShowModalWithoutHeader(!showModalWithHeader)}/>
+            <Modal maxWidth={null} hasHeader={true} title="Специальный график" show={showModalWithHeader}
+                   onClose={() => setShowModalWithHeader(!showModalWithHeader)}>
+                <div>Информация внутри модалки</div>
+                <br/>
+                <Button text={"Сохранить"} type={ButtonType.GREEN} onClick={() => setShowModalWithHeader(!showModalWithHeader)}/>
+                <div style={{height: "10px"}}></div>
+                <Button text={"Отменить"} type={ButtonType.RED} onClick={() => setShowModalWithHeader(!showModalWithHeader)}/>
+            </Modal>
+            <Modal maxWidth={"250px"} hasHeader={false} title={null} show={showModalWithoutHeader}
+                   onClose={null}>
+                <Warning text={"При изменении обнаружены записи на изменяемое время. Подтвердить удаление?"}/>
+                <br/>
+                <Button text={"Подтвердить"} type={ButtonType.GREEN}
+                        onClick={() => setShowModalWithoutHeader(!showModalWithoutHeader)}/>
+                <div style={{height: "10px"}}></div>
+                <Button text={"Отменить"} type={ButtonType.RED}
+                        onClick={() => setShowModalWithoutHeader(!showModalWithoutHeader)}/>
+            </Modal>
         </ComponentWrapper>
     </Panel>
 }

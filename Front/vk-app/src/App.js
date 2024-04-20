@@ -11,7 +11,7 @@ import {TeacherMainScreen} from "./panels/TeacherMainScreen/TeacherMainScreen.ts
 import {StudentMainScreen} from "./panels/StudentMainScreen/StudentMainScreen.tsx";
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('user-selection');
+	const [activePanel, setActivePanel] = useState('components');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
@@ -37,14 +37,15 @@ const App = () => {
 		<ConfigProvider appearance={"light"}>
 			<AdaptivityProvider>
 				<AppRoot>
+					<div id="modal-root"/>
 					<SplitLayout popout={popout}>
 						<SplitCol>
 							<View activePanel={activePanel}>
-								<Home id='home' fetchedUser={fetchedUser} go={go} />
-								<Components id='components' go={go} />
-								<UserSelection id='user-selection' userSelect={selectUser} />
-								<TeacherMainScreen id='teacher-main' go={go}  />
-								<StudentMainScreen id='student-main' go={go}  />
+								<Home id='home' fetchedUser={fetchedUser} go={go}/>
+								<Components id='components' go={go}/>
+								<UserSelection id='user-selection' userSelect={selectUser}/>
+								<TeacherMainScreen id='teacher-main' go={go}/>
+								<StudentMainScreen id='student-main' go={go}/>
 							</View>
 						</SplitCol>
 					</SplitLayout>

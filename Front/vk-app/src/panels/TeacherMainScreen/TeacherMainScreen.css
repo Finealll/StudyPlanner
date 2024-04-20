@@ -1,0 +1,11 @@
+
+
+.teacher-main-page{
+    display: flex;
+    flex-direction: column;
+}
+
+.teacher-main-page__nearest-lessons{
+    margin-top: 20px;
+    padding: 0 20px;
+}

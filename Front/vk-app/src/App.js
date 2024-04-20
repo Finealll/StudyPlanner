@@ -11,7 +11,7 @@ import {TeacherMainScreen} from "./panels/TeacherMainScreen/TeacherMainScreen.ts
 import {StudentMainScreen} from "./panels/StudentMainScreen/StudentMainScreen.tsx";
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('components');
+	const [activePanel, setActivePanel] = useState('teacher-main');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 

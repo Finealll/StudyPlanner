@@ -52,6 +52,23 @@
     background-color: #FFFFFF;
 }
 
+.default-layout__header--right{
+    display: flex;
+    flex-direction: row;
+}
+
+.default-layout__header--right>div{
+    margin-left: 10px;
+}
+
+.settings-button{
+    background-image: url("../assets/icons/settings.svg");
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    color: white;
+}
+
 .logout-button{
     background-image: url("../assets/icons/logout.svg");
     background-repeat: no-repeat;

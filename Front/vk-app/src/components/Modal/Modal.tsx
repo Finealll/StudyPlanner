@@ -17,12 +17,12 @@ const Modal = (props: ModalProps) => {
     }
 
     function onClose()  {
-        document.body.style.overflow = ''
+        //document.body.style.overflow = ''
         props.onClose();
     }
 
     const rootPortal = document.getElementById('modal-root')
-    document.body.style.overflow = 'hidden'
+    //document.body.style.overflow = 'hidden'
 
     return ReactDOM.createPortal(
         <div className="modal-wrapper">

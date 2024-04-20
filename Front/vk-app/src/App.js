@@ -7,11 +7,12 @@ import Home from './panels/Home';
 import Components from "./components/Components.tsx";
 import './App.css'
 import {UserSelection} from "./panels/UserSelector/UserSelector.tsx";
-import {TeacherMainScreen} from "./panels/TeacherMainScreen/TeacherMainScreen.tsx";
-import {StudentMainScreen} from "./panels/StudentMainScreen/StudentMainScreen.tsx";
+import {TeacherMain} from "./panels/TeacherMain/TeacherMain.tsx";
+import {StudentMain} from "./panels/StudentMain/StudentMain.tsx";
+import {TeacherProfile} from "./panels/TeacherProfile/TeacherProfile.tsx";
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('teacher-main');
+	const [activePanel, setActivePanel] = useState('teacher-profile');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
@@ -44,8 +45,9 @@ const App = () => {
 								<Home id='home' fetchedUser={fetchedUser} go={go}/>
 								<Components id='components' go={go}/>
 								<UserSelection id='user-selection' userSelect={selectUser}/>
-								<TeacherMainScreen id='teacher-main' go={go}/>
-								<StudentMainScreen id='student-main' go={go}/>
+								<TeacherMain id='teacher-main' go={go}/>
+								<TeacherProfile id='teacher-profile' go={go}/>
+								<StudentMain id='student-main' go={go}/>
 							</View>
 						</SplitCol>
 					</SplitLayout>

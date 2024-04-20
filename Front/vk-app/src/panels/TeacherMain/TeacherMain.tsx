@@ -4,7 +4,7 @@ import {DefaultLayout, DefaultLayoutProps} from "../../layouts/DefaultLayout.tsx
 import React, {useState} from "react";
 // @ts-ignore
 import {Calendar} from "../../components/Calendar/Calendar.tsx";
-import './TeacherMainScreen.css'
+import './TeacherMain.css'
 // @ts-ignore
 import {UsersList} from "../../components/UsersList/UsersList.tsx";
 // @ts-ignore
@@ -13,7 +13,7 @@ import {UsersListItem, UsersListItemProps} from "../../components/UsersList/User
 import {InfoBlock} from "../../components/InfoBlock/InfoBlock.tsx";
 import {Moment} from "moment";
 
-export const TeacherMainScreen = (props: {go : () => void}) => {
+export const TeacherMain = (props: {go : () => void}) => {
     const [nearestLessons, setNearestLessons] = useState([
         {
             id: "a0142d14-d549-4a6d-ae9c-30f81e145eb7",
@@ -46,7 +46,7 @@ export const TeacherMainScreen = (props: {go : () => void}) => {
 
     function getHeaderButtons() {
         return <>
-            <div className="settings-button" onClick={props.go} data-to="teacher-settings"/>
+            <div className="settings-button" onClick={props.go} data-to="teacher-profile"/>
             <div className="logout-button" onClick={props.go} data-to="user-selection"/>
         </>
     }
@@ -55,7 +55,7 @@ export const TeacherMainScreen = (props: {go : () => void}) => {
         return []
     }
 
-    return <DefaultLayout title="Главная" hasBack={false} go={props.go} buttons={getHeaderButtons()} >
+    return <DefaultLayout title="Главная" hasBack={false} go={props.go} buttons={getHeaderButtons()} bodyPadding={"0"}>
         <div className="teacher-main-page">
             <Calendar getCalendarInfo={getCalendarInfo} onDayClick={(day) => alert(day)}/>
             <div className="teacher-main-page__nearest-lessons">

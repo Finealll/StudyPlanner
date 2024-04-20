@@ -1,0 +1,41 @@
+
+
+.settings-block-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-block-wrapper__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.settings-block-wrapper__title{
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+
+    color: #000000;
+}
+
+.settings-block-wrapper__buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-block-wrapper__buttons>div{
+    height: 30px;
+    width: 30px;
+}
+
+.settings-block-wrapper__buttons>div:hover{
+    cursor: pointer;
+}
+
+.settings-block-wrapper__body{
+    margin-bottom: 10px;
+}

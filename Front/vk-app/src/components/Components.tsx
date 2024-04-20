@@ -34,6 +34,8 @@ import {Warning} from "./Warning/Warning.tsx";
 import {SubjectListItem} from "./SubjectsListItems/SubjectListItem.tsx";
 // @ts-ignore
 import Modal from "./Modal/Modal.tsx";
+// @ts-ignore
+import {SettingsBlockWrapper} from "./SettingsBlockWrapper/SettingsBlockWrapper.tsx";
 
 const usersListMock = [
     {
@@ -338,6 +340,14 @@ function Components ({ id, go}) {
                 <Button text={"Отменить"} type={ButtonType.RED}
                         onClick={() => setShowModalWithoutHeader(!showModalWithoutHeader)}/>
             </Modal>
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Враппер элемента настроек"}
+            description={"Оболочка для блока в настройках"}
+        >
+            <SettingsBlockWrapper title={"Предметы"} getButtons={() => <></>}>
+                <div>предмет</div>
+            </SettingsBlockWrapper>
         </ComponentWrapper>
     </Panel>
 }

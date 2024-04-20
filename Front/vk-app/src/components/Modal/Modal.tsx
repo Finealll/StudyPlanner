@@ -4,11 +4,11 @@ import './Modal.css'
 
 export interface ModalProps {
     show: boolean;
-    title: string | null | undefined;
-    hasHeader: boolean;
-    maxWidth: string | null | undefined;
+    title?: string;
+    hasHeader?: boolean;
+    maxWidth?: string;
     children: boolean | ReactChild | ReactFragment | ReactPortal;
-    onClose: () => void | null | undefined;
+    onClose?: () => void;
 }
 
 const Modal = (props: ModalProps) => {

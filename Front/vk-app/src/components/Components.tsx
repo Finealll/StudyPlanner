@@ -1,7 +1,6 @@
 import {
     Panel,
     PanelHeader,
-    Group,
     PanelHeaderBack,
 } from '@vkontakte/vkui';
 // @ts-ignore
@@ -260,8 +259,8 @@ function Components ({ id, go}) {
         >
             <div style={{display: "flex", flexDirection: "column", width: "100%"}}>
                 {SubjectListMock.map((subject) => {
-                    return <SubjectListItem {...subject} onDelete={(id) => alert(`Удалить: ${subject.name}`)}
-                                            onEdit={(id) => alert(`Изменить: ${subject.name}`)}/>
+                    return <SubjectListItem {...subject} onDelete={(_) => alert(`Удалить: ${subject.name}`)}
+                                            onEdit={(_) => alert(`Изменить: ${subject.name}`)}/>
                 })}
             </div>
         </ComponentWrapper>
@@ -322,7 +321,7 @@ function Components ({ id, go}) {
         >
             <Button text={"Модалка с хедером"} type={ButtonType.GREEN} onClick={() => setShowModalWithHeader(!showModalWithHeader)}/>
             <Button text={"Модалка без хедера"} type={ButtonType.RED} onClick={() => setShowModalWithoutHeader(!showModalWithHeader)}/>
-            <Modal maxWidth={null} hasHeader={true} title="Специальный график" show={showModalWithHeader}
+            <Modal hasHeader={true} title="Специальный график" show={showModalWithHeader}
                    onClose={() => setShowModalWithHeader(!showModalWithHeader)}>
                 <div>Информация внутри модалки</div>
                 <br/>
@@ -330,8 +329,7 @@ function Components ({ id, go}) {
                 <div style={{height: "10px"}}></div>
                 <Button text={"Отменить"} type={ButtonType.RED} onClick={() => setShowModalWithHeader(!showModalWithHeader)}/>
             </Modal>
-            <Modal maxWidth={"250px"} hasHeader={false} title={null} show={showModalWithoutHeader}
-                   onClose={null}>
+            <Modal hasHeader={false} show={showModalWithoutHeader}>
                 <Warning text={"При изменении обнаружены записи на изменяемое время. Подтвердить удаление?"}/>
                 <br/>
                 <Button text={"Подтвердить"} type={ButtonType.GREEN}

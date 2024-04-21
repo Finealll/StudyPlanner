@@ -14,7 +14,7 @@ import {StudentTeacherView} from "./panels/StudentTeacherView/StudentTeacherView
 import {string} from "prop-types";
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('user-selection');
+	const [activePanel, setActivePanel] = useState('components');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [studentTeacherViewId, setStudentTeacherViewId] = useState(null);

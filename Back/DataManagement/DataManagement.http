@@ -1,0 +1,6 @@
+@DataManagement_HostAddress = http://localhost:5197
+
+GET {{DataManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

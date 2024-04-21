@@ -74,7 +74,7 @@ export const StudentTeacherView = (props: StudentTeacherViewProps) => {
             <Calendar getCalendarInfo={getCalendarInfo} onDayClick={onClickCalendarDate}/>
             <div className="teacher-main-page__nearest-lessons">
                 {nearestLessons?.length > 0 ?
-                    <UsersList title={"Ближайшие занятия:"}>
+                    <UsersList title={"Ближайшие занятия"}>
                         {nearestLessons ? nearestLessons.map((user: UsersListItemProps, index: number) => {
                             return <UsersListItem key={index} onCancel={() => setShowRemoveEventModal(true)} {...user}/>
                         }) : <></>}

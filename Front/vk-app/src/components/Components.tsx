@@ -251,7 +251,7 @@ function Components ({ id, go}) {
             title={"Список пользователей"}
             description={"Используется для перечня учеников и учителей"}
         >
-            <UsersList title={"Ближайшие занятия:"}>
+            <UsersList title={"Ближайшие занятия"}>
                 {usersListMock ? usersListMock.map((user: UsersListItemProps, index: number) => {
                     return <UsersListItem key={index} onCancel={() => alert(`Отмена ${user.name}`)} {...user}/>
                 }) : <></>}

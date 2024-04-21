@@ -22,6 +22,11 @@ import {IntegrationInfo} from "../../components/IntegrationInfo/IntegrationInfo.
 // @ts-ignore
 import {InfoBlock} from "../../components/InfoBlock/InfoBlock.tsx";
 
+// @ts-ignore
+import '../../components/Modals/SpecialScedule/SpecialScheduleMoidal.tsx';
+// @ts-ignore
+import {SubjectModal} from "../../components/Modals/Subject/SubjectModal.tsx";
+
 
 interface TeacherSettingsProps {
     go: () => void
@@ -118,6 +123,8 @@ export const TeacherProfile = (props: TeacherSettingsProps) => {
         }
     ]);
     const [integrationStatus, setIntegrationStatus] = useState({integrated: false, email: "test@test.test"});
+    const [showAddSubjectModal, setShowAddSubjectModal] = useState(false);
+    const [showEditSubjectModal, setShowEditSubjectModal] = useState(false);
 
 
     useEffect(() => {
@@ -168,7 +175,7 @@ export const TeacherProfile = (props: TeacherSettingsProps) => {
     function getSubjectsButtons(){
         console.log("getButtons")
         return <>
-            <div className="add-button" onClick={onAddSubjectsButtonClick}/>
+            <div className="add-button" onClick={() => setShowAddSubjectModal(true)}/>
         </>
     }
 
@@ -196,12 +203,14 @@ export const TeacherProfile = (props: TeacherSettingsProps) => {
                     {subjectsList ?
                         subjectsList.map((subject) => {
                         return <SubjectListItem {...subject} onDelete={(_) => alert(`Удалить: ${subject.name}`)}
-                                                onEdit={(_) => alert(`Изменить: ${subject.name}`)}/>
+                                                onEdit={(_) => setShowEditSubjectModal(true)}/>
                         }) :
                         <InfoBlock message={"Необходимо добавить предметы"} />
                     }
                 </div>
             </SettingsBlockWrapper>
+            <SubjectModal onClose={() => setShowAddSubjectModal(false)} show={showAddSubjectModal} onSave={() => alert("onSave")} title="Добавить предмет"/>
+            <SubjectModal onClose={() => setShowEditSubjectModal(false)} show={showEditSubjectModal} onSave={() => alert("onSave")} title="Изменить предмет"/>
         </div>
     </DefaultLayout>
 }

@@ -9,3 +9,62 @@
     margin-top: 20px;
     padding: 0 20px;
 }
+
+.special-schedule__duration-from-title{
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+
+    color: #000000;
+}
+
+.special-schedule__duration-to-title{
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+
+    color: #000000;
+}
+
+.special-schedule__duration-inputs-delimiter{
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+
+    color: #000000;
+    margin: 0 5px;
+}
+
+.special-schedule__duration-from{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.special-schedule__duration-from-title{
+    font-size: 20px;
+}
+
+.special-schedule__duration-to{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.special-schedule__duration-to-title{
+    font-size: 20px;
+}
+
+.special-schedule__duration-from-inputs{
+    display: flex;
+}
+
+.special-schedule__duration-from-inputs{
+    width: 150px;
+}

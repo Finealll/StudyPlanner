@@ -13,6 +13,18 @@ import {UsersListItem, UsersListItemProps} from "../../components/UsersList/User
 import {InfoBlock} from "../../components/InfoBlock/InfoBlock.tsx";
 // @ts-ignore
 import moment, {Moment} from "moment";
+// @ts-ignore
+import Modal from "../../components/Modal/Modal.tsx";
+// @ts-ignore
+import {Button, ButtonType} from "../../components/Buttons/Button.tsx";
+// @ts-ignore
+import {Input, InputType} from "../../components/Input/Input.tsx";
+// @ts-ignore
+import {Warning} from "../../components/Warning/Warning.tsx";
+// @ts-ignore
+import {SpecialScheduleModal} from "../../components/Modals/SpecialScedule/SpecialScheduleMoidal.tsx";
+// @ts-ignore
+import {SpecialScheduleAlert} from "../../components/Modals/SpecialSceduleAlert/SpecialSceduleAlert.tsx";
 
 export const TeacherMain = (props: {go : () => void}) => {
     const [nearestLessons, setNearestLessons] = useState([
@@ -44,6 +56,12 @@ export const TeacherMain = (props: {go : () => void}) => {
             integrationLink: null,
         },
     ]);
+    const [showDayModal, setShowDayModal] = useState(false);
+    const [showDayAlert, setShowDayAlert] = useState(false);
+    const [specialSchedule, setSpecialSchedule] = useState({
+        from: moment(),
+        to: moment()
+    })
 
     function getHeaderButtons() {
         return <>
@@ -56,19 +74,25 @@ export const TeacherMain = (props: {go : () => void}) => {
         return []
     }
 
+    function onSelectCalendarDay(day: Moment){
+        setShowDayModal(true)
+    }
+
     return <DefaultLayout title="Главная" hasBack={false} go={props.go} buttons={getHeaderButtons()} bodyPadding={"0"}>
         <div className="teacher-main-page">
-            <Calendar getCalendarInfo={getCalendarInfo} onDayClick={(day) => alert(day)}/>
+            <Calendar getCalendarInfo={getCalendarInfo} onDayClick={onSelectCalendarDay}/>
             <div className="teacher-main-page__nearest-lessons">
                 {nearestLessons?.length > 0 ?
                     <UsersList title={"Ближайшие занятия:"}>
                         {nearestLessons ? nearestLessons.map((user: UsersListItemProps) => {
-                            return <UsersListItem onCancel={() => alert(`Отмена ${user.name}`)} {...user}/>
+                            return <UsersListItem onCancel={() => alert(`Отмена ${user.name}`)} {...user} onClick={() => {}}/>
                         }) : <></>}
                     </UsersList> :
                     <InfoBlock message={"На данный момент ближайшие события отсутствуют"} />
                 }
             </div>
+            <SpecialScheduleModal onClose={() => {setShowDayAlert(true);setShowDayAlert(true)}} show={showDayModal}/>
+            <SpecialScheduleAlert onClose={() => {setShowDayAlert(false);setShowDayModal(false)}} show={showDayAlert} onSave={() => alert("onSave")}/>
         </div>
     </DefaultLayout>
 }

@@ -7,7 +7,7 @@ export interface ModalProps {
     title?: string;
     hasHeader?: boolean;
     maxWidth?: string;
-    children: boolean | ReactChild | ReactFragment | ReactPortal;
+    children?: boolean | ReactChild | ReactFragment | ReactPortal;
     onClose?: () => void;
 }
 

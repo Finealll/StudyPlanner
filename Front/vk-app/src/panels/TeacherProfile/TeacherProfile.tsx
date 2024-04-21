@@ -201,8 +201,8 @@ export const TeacherProfile = (props: TeacherSettingsProps) => {
             <SettingsBlockWrapper title={"Предметы"} getButtons={getSubjectsButtons}>
                 <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%"}}>
                     {subjectsList ?
-                        subjectsList.map((subject) => {
-                        return <SubjectListItem {...subject} onDelete={(_) => alert(`Удалить: ${subject.name}`)}
+                        subjectsList.map((subject, index: number) => {
+                        return <SubjectListItem key={index} {...subject} onDelete={(_) => alert(`Удалить: ${subject.name}`)}
                                                 onEdit={(_) => setShowEditSubjectModal(true)}/>
                         }) :
                         <InfoBlock message={"Необходимо добавить предметы"} />

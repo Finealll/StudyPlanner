@@ -84,8 +84,8 @@ export const TeacherMain = (props: {go : () => void}) => {
             <div className="teacher-main-page__nearest-lessons">
                 {nearestLessons?.length > 0 ?
                     <UsersList title={"Ближайшие занятия:"}>
-                        {nearestLessons ? nearestLessons.map((user: UsersListItemProps) => {
-                            return <UsersListItem onCancel={() => alert(`Отмена ${user.name}`)} {...user} onClick={() => {}}/>
+                        {nearestLessons ? nearestLessons.map((user: UsersListItemProps, index: number) => {
+                            return <UsersListItem key={index} onCancel={() => alert(`Отмена ${user.name}`)} {...user} onClick={() => {}}/>
                         }) : <></>}
                     </UsersList> :
                     <InfoBlock message={"На данный момент ближайшие события отсутствуют"} />

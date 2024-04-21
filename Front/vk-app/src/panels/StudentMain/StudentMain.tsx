@@ -13,6 +13,11 @@ import {InfoBlock} from "../../components/InfoBlock/InfoBlock.tsx";
 import moment from 'moment';
 // @ts-ignore
 import {Input, InputType} from "../../components/Input/Input.tsx";
+// @ts-ignore
+import {RemoveTeacherModal} from "../../components/Modals/RemoveTeacher/RemoveTeacher.tsx";
+
+const deleteTeacherWithLessonsMessage = "Вы уверены, что хотите удалить преподавателя и отменить занятия?";
+const deleteTeacherWithoutLessonsMessage = "Вы уверены, что хотите удалить преподавателя?";
 
 export const StudentMain= (props: {go : () => void; goStudentTeacherView: (id: string) => void}) => {
     const [nearestLessons, setNearestLessons] = useState([
@@ -44,9 +49,20 @@ export const StudentMain= (props: {go : () => void; goStudentTeacherView: (id: s
             integrationLink: null,
         },
     ]);
+    const [showDeleteTeacherModal, setShowDeleteTeacherModal] = useState(false);
+    const [deleteTeacherMessage, setDeleteTeacherMessage] = useState(deleteTeacherWithLessonsMessage);
 
     function getLogOutButton() {
         return <div className="logout-button" onClick={props.go} data-to="user-selection"/>
+    }
+
+    function onRemoveTeacher(user: UsersListItemProps){
+        if(user.date ){
+            setDeleteTeacherMessage(deleteTeacherWithLessonsMessage);
+        } else {
+            setDeleteTeacherMessage(deleteTeacherWithoutLessonsMessage);
+        }
+        setShowDeleteTeacherModal(true);
     }
 
     return <DefaultLayout title="Главная" hasBack={false} go={props.go} buttons={getLogOutButton()} >
@@ -55,8 +71,8 @@ export const StudentMain= (props: {go : () => void; goStudentTeacherView: (id: s
                 {nearestLessons?.length > 0 ?
                     <>
                         <UsersList title={"Мои преподаватели:"}>
-                            {nearestLessons ? nearestLessons.map((user: UsersListItemProps) => {
-                                return <UsersListItem onCancel={() => alert(`Отмена ${user.name}`)} onClick={() => props.goStudentTeacherView(user.id)} {...user}/>
+                            {nearestLessons ? nearestLessons.map((user: UsersListItemProps, index: number) => {
+                                return <UsersListItem key={index} onCancel={() => onRemoveTeacher(user)} onClick={() => props.goStudentTeacherView(user.id)} {...user}/>
                             }) : <></>}
                         </UsersList>
                         <br/>
@@ -69,11 +85,11 @@ export const StudentMain= (props: {go : () => void; goStudentTeacherView: (id: s
                     </> :
                     <div className="student-main-page__add-teacher">
                         <InfoBlock message={"Отсутствуют добавленные преподаватели. Самое время их добавить:"}/>
-                        <br/>
                         <Input style={InputType.GRAY} placeholder="код преподавателя"
                                onSubmit={(value) => alert(value)}/>
                     </div>
                 }
+                <RemoveTeacherModal title={deleteTeacherMessage} onKeep={() => setShowDeleteTeacherModal(false)} onSave={() => alert("onSave")} show={showDeleteTeacherModal}/>
             </div>
         </div>
     </DefaultLayout>

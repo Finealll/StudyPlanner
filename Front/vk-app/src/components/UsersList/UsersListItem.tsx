@@ -21,8 +21,8 @@ export interface UsersListItemProps {
 }
 
 export const UsersListItem = (props: UsersListItemProps) => {
-    return <div className="users-list-item" onClick={() => props.onClick(props.id)}>
-        <div className="users-list-item-info">
+    return <div className="users-list-item">
+        <div className="users-list-item-info" onClick={() => props.onClick(props.id)}>
             <div className="users-list-item-info-name">{props.name}</div>
             {props.date ? <>
                 <div className="users-list-item-info-subject">{props.subject}</div>

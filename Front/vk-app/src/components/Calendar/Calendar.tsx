@@ -93,8 +93,8 @@ export const Calendar = (props: CalendarProps) => {
         }
 
         return <>
-            {calendarData.map((dayProps: CalendarDayProps) => {
-                return <div className={getDayClasses(dayProps)} onClick={dayProps.disabled ? () => true : () => props.onDayClick(dayProps.date)}>
+            {calendarData.map((dayProps: CalendarDayProps, index: number) => {
+                return <div key={index} className={getDayClasses(dayProps)} onClick={dayProps.disabled ? () => true : () => props.onDayClick(dayProps.date)}>
                     <div className="calendar-body__day--indicators">
                         {dayProps.hasLessons ? <div className="calendar-body__day--indicators--hasLessons"></div> : <></>}
                         {dayProps.hasSpecialSchedule ? <div className="calendar-body__day--indicators--hasSpecialSchedule"></div> : <></>}
@@ -115,8 +115,8 @@ export const Calendar = (props: CalendarProps) => {
         </div>
         <div className="calendar-body">
             <div className="calendar-body__weekdays">
-                {weekdays.map((weekday: string) => {
-                    return <div className="calendar-body__weekday">{weekday}</div>
+                {weekdays.map((weekday: string, index: number) => {
+                    return <div key={index} className="calendar-body__weekday">{weekday}</div>
                 })}
             </div>
             <div className="calendar-body__days">

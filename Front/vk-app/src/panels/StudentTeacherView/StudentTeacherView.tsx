@@ -16,6 +16,10 @@ import React, {useEffect, useState} from "react";
 // @ts-ignore
 import moment, {Moment} from "moment/moment";
 import bridge from "@vkontakte/vk-bridge-mock";
+// @ts-ignore
+import {RemoveEventModal} from "../../components/Modals/RemoveEvent/RemoveEvent.tsx";
+// @ts-ignore
+import {AddEventModal} from "../../components/Modals/AddEvent/AddEventModal.tsx";
 
 interface StudentTeacherViewProps {
     teacherId: string;
@@ -52,24 +56,34 @@ export const StudentTeacherView = (props: StudentTeacherViewProps) => {
         },
     ]);
     const [fetchedTeacher, setFetchedTeacher] = useState({first_name:"Юлия"});
+    const [showRemoveEventModal, setShowRemoveEventModal] = useState(false);
+    const [showAddEventModal, setShowAddEventModal] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(moment());
 
     function getCalendarInfo(fromDate: Moment, toDate: Moment) {
         return []
     }
 
+    function onClickCalendarDate(date: Moment){
+        setSelectedDate(date);
+        setShowAddEventModal(true);
+    }
+
     return <DefaultLayout title={fetchedTeacher.first_name ? fetchedTeacher.first_name : ""} hasBack={true} backView="student-main" go={props.go} bodyPadding={"0"}>
         <div className="teacher-main-page">
-            <Calendar getCalendarInfo={getCalendarInfo} onDayClick={(day) => alert(day)}/>
+            <Calendar getCalendarInfo={getCalendarInfo} onDayClick={onClickCalendarDate}/>
             <div className="teacher-main-page__nearest-lessons">
                 {nearestLessons?.length > 0 ?
                     <UsersList title={"Ближайшие занятия:"}>
-                        {nearestLessons ? nearestLessons.map((user: UsersListItemProps) => {
-                            return <UsersListItem onCancel={() => alert(`Отмена ${user.name}`)} {...user}/>
+                        {nearestLessons ? nearestLessons.map((user: UsersListItemProps, index: number) => {
+                            return <UsersListItem key={index} onCancel={() => setShowRemoveEventModal(true)} {...user}/>
                         }) : <></>}
                     </UsersList> :
                     <InfoBlock message={"На данный момент ближайшие события отсутствуют"} />
                 }
             </div>
         </div>
+        <RemoveEventModal onKeep={() => setShowRemoveEventModal(false)} onSave={() => alert("onSave")} show={showRemoveEventModal}/>
+        <AddEventModal date={selectedDate} show={showAddEventModal} onClose={() => setShowAddEventModal(false)} onSave={() => setShowAddEventModal(false)}/>
     </DefaultLayout>
 }

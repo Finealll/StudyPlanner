@@ -42,9 +42,9 @@ const dayOfWeekToText = [
 
 export const ScheduleSelector = (props: ScheduleSelectorProps) => {
     return <div className="schedule-selector">
-        {dayOfWeekToText.map((day)=> {
+        {dayOfWeekToText.map((day, index: number)=> {
             let item = props.items.find((item: ScheduleSelectorItem) => item.dayOfWeek === day.id);
-            return <div className='schedule-selector-item'>
+            return <div key={index} className='schedule-selector-item'>
                 <div className={`schedule ${item.isSelected ? 'schedule-selected' : 'schedule-unselected'}`}
                      onClick={() => props.onSelect(item)}>
                     {day.value}

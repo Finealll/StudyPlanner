@@ -1,0 +1,12 @@
+
+
+.time-select>select{
+    background-color: #D9D9D9;
+    border-radius: 12px;
+    padding: 4px;
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+    margin-right: 10px;
+}

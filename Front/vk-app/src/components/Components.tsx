@@ -36,6 +36,8 @@ import {SubjectListItem} from "./SubjectsListItems/SubjectListItem.tsx";
 import Modal from "./Modal/Modal.tsx";
 // @ts-ignore
 import {SettingsBlockWrapper} from "./SettingsBlockWrapper/SettingsBlockWrapper.tsx";
+// @ts-ignore
+import {TimeSelect} from "./TimeSelect/TimeSelect.tsx";
 
 const usersListMock = [
     {
@@ -95,7 +97,7 @@ const badgesInitialState = [
     }
 ]
 
-const sheduleMockInitialState = [
+const sсheduleMockInitialState = [
     {
         id: 1,
         dayOfWeek: 1,
@@ -162,7 +164,7 @@ const SubjectListMock = [
 
 function Components ({ id, go}) {
     const [badgesMock, setBadgesMock] = useState(badgesInitialState);
-    const [scheduleMock, setScheduleMock] = useState(sheduleMockInitialState);
+    const [scheduleMock, setScheduleMock] = useState(sсheduleMockInitialState);
     const [showModalWithHeader, setShowModalWithHeader] = useState(false);
     const [showModalWithoutHeader, setShowModalWithoutHeader] = useState(false);
 
@@ -250,8 +252,8 @@ function Components ({ id, go}) {
             description={"Используется для перечня учеников и учителей"}
         >
             <UsersList title={"Ближайшие занятия:"}>
-                {usersListMock ? usersListMock.map((user: UsersListItemProps) => {
-                    return <UsersListItem onCancel={() => alert(`Отмена ${user.name}`)} {...user}/>
+                {usersListMock ? usersListMock.map((user: UsersListItemProps, index: number) => {
+                    return <UsersListItem key={index} onCancel={() => alert(`Отмена ${user.name}`)} {...user}/>
                 }) : <></>}
             </UsersList>
         </ComponentWrapper>
@@ -260,8 +262,8 @@ function Components ({ id, go}) {
             description={"Элемены списка предметов"}
         >
             <div style={{display: "flex", flexDirection: "column", width: "100%"}}>
-                {SubjectListMock.map((subject) => {
-                    return <SubjectListItem {...subject} onDelete={(_) => alert(`Удалить: ${subject.name}`)}
+                {SubjectListMock.map((subject, index: number) => {
+                    return <SubjectListItem key={index} {...subject} onDelete={(_) => alert(`Удалить: ${subject.name}`)}
                                             onEdit={(_) => alert(`Изменить: ${subject.name}`)}/>
                 })}
             </div>
@@ -346,8 +348,14 @@ function Components ({ id, go}) {
             description={"Оболочка для блока в настройках"}
         >
             <SettingsBlockWrapper title={"Предметы"} getButtons={() => <></>}>
-                <div>предмет</div>
+                <div>Предмет</div>
             </SettingsBlockWrapper>
+        </ComponentWrapper>
+        <ComponentWrapper
+            title={"Селектор времени"}
+            description={"Позволяет выбирать время"}
+        >
+            <TimeSelect getAvailableHours={() => [1,2,3]} getAvailableMinutes={() => [15,30,45]} onSelectTime={(time) => alert(time.toISOString())}/>
         </ComponentWrapper>
     </Panel>
 }
